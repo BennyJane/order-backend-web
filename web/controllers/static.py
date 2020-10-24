@@ -18,3 +18,4 @@ def index(filename):
     # 这里要在application内设置root_path， 并覆盖默认static
     return send_from_directory(current_app.root_path + "/web/static" + filename)
 
+

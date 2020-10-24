@@ -375,7 +375,7 @@ body.mini-navbar .navbar-default .nav > li > a {
   font-size: 16px;
 }
 body.mini-navbar .logo-element {
-  display: block;
+  /*display: block;*/
 }
 body.canvas-menu .logo-element {
   display: none;

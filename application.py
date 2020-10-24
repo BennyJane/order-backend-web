@@ -12,6 +12,7 @@ from _compat import win
 from common.libs.UrlManager import UrlManager
 from web.app import Application
 from web.extensions import db
+from web.interceptors.AuthInterceptor import check_auth
 from web.interceptors.ErrorInterceptor import register_error
 from www import register_blueprint
 
@@ -34,6 +35,7 @@ app.config.from_pyfile(base_config)
 app.config.from_pyfile(env_config)
 db.init_app(app)
 register_blueprint(app)
+app.before_request(check_auth)
 register_error(app)
 
 app.add_template_global(UrlManager.buildUrl, 'buildUrl')

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="{{url_for('static',filename='favicon.ico')}}" type="image/x-icon"/>
     <title>管理后台</title>
     <link href="{{ buildStaticUrl('/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ buildStaticUrl('/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -17,7 +18,7 @@
                 <li class="nav-header">
                     <div class="profile-element text-center">
                         <img alt="image" class="img-circle" src="{{ buildStaticUrl('/images/common/logo.png') }}"/>
-                        <p class="text-muted">编程浪子</p>
+                        <p class="text-muted">{{g.current_user.nickname}}</p>
                     </div>
                     <div class="logo-element">
                         <img alt="image" class="img-circle" src="{{ buildStaticUrl('/images/common/logo.png') }}"/>
