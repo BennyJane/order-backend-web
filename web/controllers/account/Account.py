@@ -88,11 +88,11 @@ def setPwd():
     req = request.values
     # 尽量不要使用id作为变量名， 内建函数 id（）
     user_id = ParamsValidator.GetORSetValue(req, 'id', value=0)
-    nickname = ParamsValidator.GetORSetValue(req, 'nickname')
-    mobile = ParamsValidator.GetORSetValue(req, 'mobile')
-    email = ParamsValidator.GetORSetValue(req, 'email')
-    login_name = ParamsValidator.GetORSetValue(req, 'login_name')
-    login_pwd = ParamsValidator.GetORSetValue(req, 'login_pwd')
+    nickname = ParamsValidator.GetORSetValue(req, 'nickname', value="")
+    mobile = ParamsValidator.GetORSetValue(req, 'mobile', value="")
+    email = ParamsValidator.GetORSetValue(req, 'email', value="")
+    login_name = ParamsValidator.GetORSetValue(req, 'login_name', value="")
+    login_pwd = ParamsValidator.GetORSetValue(req, 'login_pwd', value="")
 
     if ParamsValidator.DataRequired(nickname):
         resp['code'] = -1
@@ -144,7 +144,7 @@ def ops():
     req = request.values
 
     user_id = ParamsValidator.GetORSetValue(req, 'id', value=0)
-    act = ParamsValidator.GetORSetValue(req, 'act')
+    act = ParamsValidator.GetORSetValue(req, 'act', value="")
     user_info = User.query.filter_by(uid=id).first()
 
     if ParamsValidator.DataRequired(user_id):

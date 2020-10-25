@@ -15,9 +15,4 @@ class ParamsValidator(object):
 
     @staticmethod
     def GetORSetValue(src, target, value=None):
-        """
-        value 默认设置为空字符串
-        """
-        if value is None:
-            value = ""
         return src[target] if target in src else value

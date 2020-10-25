@@ -97,3 +97,55 @@ def iPagination(params):
     ret['total'] = total
     ret['range'] = range(ret['from'], ret['end'] + 1)  # 返回页码范围的值
     return ret
+
+
+'''
+根据某个字段获取一个dic出来   ==> 其实封装的是连表查询的方法
+'''
+
+
+def getDictFilterField(db_model, select_filed, key_field, id_list):
+    ret = {}
+    query = db_model.query
+    if id_list and len(id_list) > 0:
+        query = query.filter(select_filed.in_(id_list))
+
+    res_list = query.all()
+    if not res_list:
+        return ret
+    for item in res_list:
+        if not hasattr(item, key_field):
+            break
+
+        ret[getattr(item, key_field)] = item
+    return ret
+
+
+def selectFilterObj(obj, field):
+    ret = []
+    for item in obj:
+        if not hasattr(item, field):
+            break
+        if getattr(item, field) in ret:
+            continue
+        ret.append(getattr(item, field))
+    return ret
+
+
+def getDictListFilterField(db_model, select_field, key_field, id_list):
+    ret = {}
+    query = db_model.query
+    if id_list and len(id_list) > 0:
+        # 筛选id在id_list 范围内的数据
+        query = query.filter(select_field.in_(id_list))
+    res_list = query.all()
+    if not res_list:
+        return ret
+    for item in res_list:
+        if not hasattr(item, key_field):
+            break
+        target_field = getattr(item, key_field)
+        if target_field not in ret:
+            ret[target_field] = []
+        ret[target_field].append(item)
+    return ret
