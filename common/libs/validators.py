@@ -15,4 +15,13 @@ class ParamsValidator(object):
 
     @staticmethod
     def GetORSetValue(src, target, value=None):
-        return src[target] if target in src else value
+        result = src[target] if target in src else value
+        # 根据value的值，判断输入内容的类型
+        try:
+            if isinstance(value, int):
+                result = int(result)
+            elif isinstance(value, float):
+                result = float(result)
+        except Exception:
+            pass
+        return result

@@ -98,7 +98,7 @@ def foot_set():
             return redirect(UrlManager.buildUrl("/food/index"))
 
         cat_list = FoodCat.query.all()
-        resp_data['info'] = info
+        resp_data['info'] = target_info
         resp_data['cat_list'] = cat_list
         resp_data['current'] = 'index'
         return ops_render("food/set.html", **resp_data)
@@ -111,7 +111,7 @@ def foot_set():
     price = ParamsValidator.GetORSetValue(req, 'price', value="")
     main_image = ParamsValidator.GetORSetValue(req, 'main_image', value="")
     summary = ParamsValidator.GetORSetValue(req, 'summary', value="")
-    stock = ParamsValidator.GetORSetValue(req, 'stock', value="")
+    stock = ParamsValidator.GetORSetValue(req, 'stock', value=0)
     tags = ParamsValidator.GetORSetValue(req, 'tags', value="")
 
     converted_price = 0.00

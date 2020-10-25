@@ -14,6 +14,7 @@ from web.controllers.index import index_bp
 from web.controllers.user.User import user_bp
 from web.controllers.member.Member import member_bp
 from web.controllers.stat.Stat import stat_bp
+from web.controllers.upload.Upload import upload_bp
 
 
 def register_blueprint(app):
@@ -25,4 +26,5 @@ def register_blueprint(app):
     app.register_blueprint(food_bp, url_prefix='/food')
     app.register_blueprint(member_bp, url_prefix='/member')
     app.register_blueprint(stat_bp, url_prefix='/stat')
+    app.register_blueprint(upload_bp, url_prefix='/upload')
     # app.register_blueprint(static_bp, url_prefix='/static')

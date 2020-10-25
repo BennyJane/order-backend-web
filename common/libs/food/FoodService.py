@@ -5,8 +5,8 @@
 # @File : __init__.py.py
 # @Project : order-backend-web
 from common.libs.Helper import getCurrentDate
+from common.models.food.Food import Food
 from common.models.food.FoodStockChangeLog import FoodStockChangeLog
-from web.controllers.food import Food
 from web.extensions import db
 
 
